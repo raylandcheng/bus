@@ -9,6 +9,9 @@ async function fetchBus(route) {
 
             var bus = document.getElementById(route);
             var li = document.createElement("li");
+            var timeSpan = document.createElement("span");
+            var minSpan = document.createElement("span");
+            var rmkSpan = document.createElement("span");
 
             var eta = new Date(element.eta);
             var timestamp = new Date(element.data_timestamp);
@@ -18,18 +21,29 @@ async function fetchBus(route) {
             var deltaMins = (eta - timestamp) / (1000 * 60);
 
             deltaMins = deltaMins < 0 ? '-' : Math.floor(deltaMins);
+            minSpan.innerText = deltaMins;
+            minSpan.classList.add("minute");
+
+            rmkSpan.innerText = ' mins ' + (remark.length > 1 ? ' : ' + remark : '');
+            rmkSpan.classList.add("remark");
+
+
+
 
             var header = document.getElementById('time');
+
             header.textContent = 'Data Time: ' + timestamp.toLocaleString('en-UK', {
                 timeStyle: 'short',
                 hour12: false,
             })
-            
+
             if (element.eta) {
                 li.textContent = eta.toLocaleString('en-UK', {
                     timeStyle: 'short',
                     hour12: false,
-                }) + ' | ' + deltaMins + ' mins ' + remark;
+                }) + ' | '; // + deltaMins + ' mins '; // + remark;
+                li.appendChild(minSpan);
+                li.appendChild(rmkSpan);
             } else {
                 li.textContent = 'No scheduled information'
             }

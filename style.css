@@ -1,17 +1,51 @@
-.box {
-    margin: 3% 0%;
-    display: grid;
-    justify-content: center;
+html, body {
+    margin: 0;
+    height: 100%;
+    background-color: rgba(184, 255, 246, 0.308); 
 }
-#time {
-    margin-bottom:1em;
+body {
+    display: grid;    
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: 2em 1fr 2em;
 }
-
+main {
+    
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+footer {
+    grid-area: footer;
+}
+.boundary {
+    background-color: rgb(108, 174, 228);
+}
+.headbar {
+    width:100vw;
+    height: 2em;
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    grid-area: header;
+}
 h3 {
     justify-self: center;
+    margin: 1em;
+    color: rgb(0, 121, 168);
 }
 ul {
     justify-self: center;
     list-style-type: none;
     padding: 0;
+    color: rgb(44, 65, 253);
+}
+.remark {
+    color: rgb(100, 100, 100);
+}
+.minute {
+    color: rgb(18, 21, 179);
+    font-size: 1.22em;
 }
