@@ -3,6 +3,9 @@
     display: grid;
     justify-content: center;
 }
+#time {
+    margin-bottom:1em;
+}
 
 h3 {
     justify-self: center;

@@ -13,20 +13,25 @@ async function fetchBus(route) {
             var eta = new Date(element.eta);
             var timestamp = new Date(element.data_timestamp);
 
+            var remark = element.rmk_en;
 
             var deltaMins = (eta - timestamp) / (1000 * 60);
 
+            deltaMins = deltaMins < 0 ? '-' : deltaMins;
+
             var header = document.getElementById('time');
             header.textContent = 'Data Time: ' + timestamp.toLocaleString('en-UK', {
-                timeStyle: 'medium',
+                timeStyle: 'short',
                 hour12: false,
             })
             
             if (element.eta) {
                 li.textContent = eta.toLocaleString('en-UK', {
-                    timeStyle: 'medium',
+                    timeStyle: 'short',
                     hour12: false,
-                }) + ' | ' + Math.floor(deltaMins) + ' mins';
+                }) + ' | ' + Math.floor(deltaMins) + ' mins ' + remark;
+            } else {
+                li.textContent = 'No scheduled information'
             }
 
             bus.appendChild(li);
