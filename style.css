@@ -1,0 +1,14 @@
+.box {
+    margin: 3% 0%;
+    display: grid;
+    justify-content: center;
+}
+
+h3 {
+    justify-self: center;
+}
+ul {
+    justify-self: center;
+    list-style-type: none;
+    padding: 0;
+}
