@@ -17,7 +17,7 @@ async function fetchBus(route) {
 
             var deltaMins = (eta - timestamp) / (1000 * 60);
 
-            deltaMins = deltaMins < 0 ? '-' : deltaMins;
+            deltaMins = deltaMins < 0 ? '-' : Math.floor(deltaMins);
 
             var header = document.getElementById('time');
             header.textContent = 'Data Time: ' + timestamp.toLocaleString('en-UK', {
@@ -29,7 +29,7 @@ async function fetchBus(route) {
                 li.textContent = eta.toLocaleString('en-UK', {
                     timeStyle: 'short',
                     hour12: false,
-                }) + ' | ' + Math.floor(deltaMins) + ' mins ' + remark;
+                }) + ' | ' + deltaMins + ' mins ' + remark;
             } else {
                 li.textContent = 'No scheduled information'
             }
